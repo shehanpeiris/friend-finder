@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Show Me Homies! Survey</title>
+  <!-- Link to Bootstrap and FontAwesome CDNs -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- Figure out why this CSS link isn't working -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!-- Link to jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- Reservation Page -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h2>Show Me Homies Survey</h2>
+          </div>
+          <div class="card-body">
+            <form role="form" method="POST">
+              <div class="form-group">
+                <label for="friend-name">Name</label>
+                <input type="text" class="form-control" id="friend-name">
+              </div>
+              <div class="form-group">
+                <label for="friend-photo">Link to Photo</label>
+                <input type="text" class="form-control" id="friend-photo">
+              </div>
+              <br>
+              <hr>
+              <br>
+              <div class="form-group">
+                <label for="surveyQ1">1. I find it difficult to introduce myself to new people.</label>
+                <select class="form-control" id="surveyQ1">
+                  <option>1 (strongly disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (strongly agree)</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="surveyQ2">2. I am good at staying calm when I'm in tense or pressure-filled situations.</label>
+                <select class="form-control" id="surveyQ2">
+                  <option>1 (strongly disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (strongly agree)</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="surveyQ3">3. When I'm in an Uber, I enjoy conversing with my driver and fellow passengers.</label>
+                <select class="form-control" id="surveyQ3">
+                  <option>1 (strongly disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (strongly agree)</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="surveyQ4">4. I don't like enviroments like bars or clubs where it's too loud to have a conversation.</label>
+                <select class="form-control" id="surveyQ4">
+                  <option>1 (strongly disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (strongly agree)</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="surveyQ5">5. I love doing new things.</label>
+                <select class="form-control" id="surveyQ5">
+                  <option>1 (strongly disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (strongly agree)</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="surveyQ6">6. I am very responsive to texts, emails and calls.</label>
+                <select class="form-control" id="surveyQ6">
+                  <option>1 (strongly disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (strongly agree)</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="surveyQ7">7. I'm laidback and don't mind if plans change.</label>
+                <select class="form-control" id="surveyQ7">
+                  <option>1 (strongly disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (strongly agree)</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="surveyQ8">8. I'm usually energetic and highly motivated.</label>
+                <select class="form-control" id="surveyQ8">
+                  <option>1 (strongly disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (strongly agree)</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="surveyQ9">9. I tend to be emotional and sometimes let my emotions get the best of me.</label>
+                <select class="form-control" id="surveyQ9">
+                  <option>1 (strongly disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (strongly agree)</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="surveyQ10">10. I draw energy from being around other people.</label>
+                <select class="form-control" id="surveyQ10">
+                  <option>1 (strongly disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (strongly agree)</option>
+                </select>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary submit" data-toggle="modal" data-target="#matchModal">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal to display results -->
+    <div class="modal fade" id="matchModal" tabindex="-1" role="dialog" aria-labelledby="matchModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="matchModalLabel">Your New Friend!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="match-modal">
+            <p id="modal-text"></p>
+            <img id="modal-image">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+        <p><a class="footer-text" href="/api/friends">API Friends Link</a>
+    </div>
+  </footer>
+</body>
+</html>
+
+<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+<script type="text/javascript">
+  // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+  // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+  // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+  // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
+
+  $(".submit").on("click", function(event) {
+    event.preventDefault();
+
+    // Here we grab the form elements
+    var newProfile = {
+      name: $("#friend-name").val().trim(),
+      photo: $("#friend-photo").val().trim(),
+      scores: [
+        $("#surveyQ1").val(),
+        $("#surveyQ2").val(),
+        $("#surveyQ3").val(),
+        $("#surveyQ4").val(),
+        $("#surveyQ5").val(),
+        $("#surveyQ6").val(),
+        $("#surveyQ7").val(),
+        $("#surveyQ8").val(),
+        $("#surveyQ9").val(),
+        $("#surveyQ10").val()
+      ]
+    };
+
+    // console.log(newProfile);
+
+    // This line is the magic. It"s very similar to the standard ajax function we used.
+    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+    // depending on if a tables is available or not.
+
+    $.post("/api/friends", newProfile);
+
+    function findMatch() {
+      // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+      $.ajax({ url: "/api/friends", method: "GET" })
+        .then(function(friendData) {
+
+          // Here we then log the waitlistData to console, where it will show up as an object.
+          console.log(friendData);
+          console.log("------------------------------------");
+          var differenceArray = [];
+          var n = friendData.length - 1;
+          console.log("n = ", n);
+          // Loop through and display each of the customers
+          for (var i = 0; i < n; i++) {
+            var responseDelta = 0;
+            for (var j = 0; j < 10; j++) {
+              responseDelta += parseInt(Math.abs(parseInt(friendData[i].scores[j]) - parseInt(friendData[n].scores[j])));
+              console.log("Response delta", responseDelta);
+            }
+            differenceArray.push(responseDelta);
+          }
+          console.log(differenceArray);
+          indexOfMin(differenceArray);
+          console.log(friendData[match].name);
+          // console.log(n);
+          //   // Get a reference to the waitList element and populate it with tables
+          var modalText = $("#modal-text");
+          modalText.text("Name: " + friendData[match].name);
+
+          var modalImage = $("#modal-image");
+          modalImage.attr("src", friendData[match].photo);
+          $("#matchModal").modal('show');
+          // }
+        });
+    };
+
+    var match;
+
+    function indexOfMin(arr) {
+      if (arr.length === 0) {
+          return -1;
+      }
+
+      var min = arr[0];
+      var minIndex = 0;
+
+      for (var k = 1; k < arr.length; k++) {
+        if (arr[k] < min) {
+          minIndex = k;
+          min = arr[k];
+        }
+      };
+
+      match = minIndex;
+    }
+
+    function clearTable() {
+      // Clear the tables on the server and then empty the elements on the client
+      $.ajax({ url: "/api/clear", method: "POST" });
+    }
+    clearTable();
+    findMatch();
+  });
+</script>

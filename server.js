@@ -11,11 +11,12 @@ var PORT = process.env.PORT || 2336;
 // App middleware to parse data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '/public')));
 
 // ================================================================================
 // ROUTES (Link to app's route files which serve as an app map depending on URLs)
-require("./routing/apiRoutes")(app);
-require("./routing/htmlRoutes")(app);
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 // =============================================================================
 // LISTENER (starts the server)
