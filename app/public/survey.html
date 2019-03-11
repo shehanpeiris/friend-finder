@@ -6,7 +6,6 @@
   <!-- Link to Bootstrap and FontAwesome CDNs -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <!-- Figure out why this CSS link isn't working -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- Link to jQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -162,7 +161,7 @@
           </div>
           <div class="modal-body" id="match-modal">
             <p id="modal-text"></p>
-            <img id="modal-image">
+            <img class="img-responsive" id="modal-image">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -207,75 +206,83 @@
       ]
     };
 
-    // console.log(newProfile);
+    console.log("Test New Profile: " + newProfile);
+      
 
-    // This line is the magic. It"s very similar to the standard ajax function we used.
-    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
-    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
-    // depending on if a tables is available or not.
-
-    $.post("/api/friends", newProfile);
+    //Push the new profile to the friends data array
+    $.post("/api/friends", newProfile)
+      .then(function(data) {
+        console.log("survey.html", data);
+    });
 
     function findMatch() {
       // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-      $.ajax({ url: "/api/friends", method: "GET" })
-        .then(function(friendData) {
-
-          // Here we then log the waitlistData to console, where it will show up as an object.
-          console.log(friendData);
+      $.get("/api/friends")
+        .then(function(data) {
+          // Here we then log the friends data to the console, where it will show up as an object.
+          console.log("Trying to access data already on file: " + data);
           console.log("------------------------------------");
           var differenceArray = [];
-          var n = friendData.length - 1;
+          var n = data.length - 1;
           console.log("n = ", n);
           // Loop through and display each of the customers
           for (var i = 0; i < n; i++) {
             var responseDelta = 0;
             for (var j = 0; j < 10; j++) {
-              responseDelta += parseInt(Math.abs(parseInt(friendData[i].scores[j]) - parseInt(friendData[n].scores[j])));
-              console.log("Response delta", responseDelta);
+              responseDelta += parseInt(Math.abs(parseInt(data[i].scores[j]) - parseInt(data[n].scores[j])));
             }
             differenceArray.push(responseDelta);
+            console.log("Response delta", responseDelta);
           }
-          console.log(differenceArray);
-          indexOfMin(differenceArray);
-          console.log(friendData[match].name);
-          // console.log(n);
-          //   // Get a reference to the waitList element and populate it with tables
+          console.log("Diff Array: ", differenceArray);
+          var match = differenceArray.indexOf(Math.min(...differenceArray));
+          console.log("Match: ", match);          
+          // var min = differenceArray[0];
+          // var minIndex = 0;
+          // for (var k = 1; k < differenceArray.length; k++) {
+          //   if (differenceArray[k] < min) {
+          //     minIndex = k;
+          //     min = differenceArray[k];
+          //   }
+          //   match = k;
+          // };
+          // console.log(differenceArray[match]);
+          
+          console.log(data[match].name);
           var modalText = $("#modal-text");
-          modalText.text("Name: " + friendData[match].name);
+          modalText.text("Name: " + data[match].name);
 
           var modalImage = $("#modal-image");
-          modalImage.attr("src", friendData[match].photo);
+          modalImage.attr("src", data[match].photo);
           $("#matchModal").modal('show');
-          // }
         });
     };
 
-    var match;
+    // var match;
 
-    function indexOfMin(arr) {
-      if (arr.length === 0) {
-          return -1;
-      }
+    // function indexOfMin(arr) {
+    //   if (arr.length === 0) {
+    //       return -1;
+    //   }
 
-      var min = arr[0];
-      var minIndex = 0;
+    //   var min = arr[0];
+    //   var minIndex = 0;
 
-      for (var k = 1; k < arr.length; k++) {
-        if (arr[k] < min) {
-          minIndex = k;
-          min = arr[k];
-        }
-      };
+    //   for (var k = 1; k < arr.length; k++) {
+    //     if (arr[k] < min) {
+    //       minIndex = k;
+    //       min = arr[k];
+    //     }
+    //   };
 
-      match = minIndex;
-    }
+    //   match = parseInt(minIndex);
+    // }
 
-    function clearTable() {
-      // Clear the tables on the server and then empty the elements on the client
-      $.ajax({ url: "/api/clear", method: "POST" });
-    }
-    clearTable();
+    // function clearTable() {
+    //   // Clear the tables on the server and then empty the elements on the client
+    //   $.ajax({ url: "/api/clear", method: "POST" });
+    // };
+    // clearTable();
     findMatch();
   });
 </script>

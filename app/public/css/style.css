@@ -6,6 +6,9 @@ body {
   background: none;
 }
 
+#modal-image {
+  max-width: 450px;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
